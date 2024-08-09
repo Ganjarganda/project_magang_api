@@ -2,13 +2,14 @@
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+    $sql = "INSERT INTO users (nama, email, password) VALUES (:nama, :email, :password)";
     $stmt = $pdo->prepare($sql);
 
-    if ($stmt->execute(['username' => $username, 'password' => $password])) {
+    if ($stmt->execute(['nama' => $nama, 'email' => $email, 'password' => $password])) {
         echo json_encode(['status' => 1, 'message' => 'User registered successfully']);
     } else {
         echo json_encode(['status' => 0, 'message' => 'Failed to register user']);
