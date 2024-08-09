@@ -2,9 +2,12 @@
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+
+    $input = json_decode(file_get_contents('php://input'), true);
+
+    $nama = $input['nama'];
+    $email = $input['email'];
+    $password = $input['password'];
 
     $sql = "INSERT INTO users (nama, email, password) VALUES (:nama, :email, :password)";
     $stmt = $pdo->prepare($sql);

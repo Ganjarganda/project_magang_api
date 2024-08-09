@@ -2,7 +2,10 @@
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+
+    $input = json_decode(file_get_contents('php://input'), true);
+
+    $id = $input['id'];
 
     $sql = "SELECT * FROM users WHERE id = :id";
     $stmt = $pdo->prepare($sql);
