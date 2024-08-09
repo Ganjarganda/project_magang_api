@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user == true) {
         echo json_encode(['status' => 1, 'message' => 'Login successful', 'data' => $user]);
     } else {
-        echo json_encode(['status' => 0, 'message' => 'Invalid email or password']);
+        echo json_encode(['status' => 0, 'message' => 'Email tidak ada']);
     }
 } else {
     echo json_encode(['status' => 0, 'message' => 'Invalid request method']);
